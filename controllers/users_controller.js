@@ -54,3 +54,11 @@ module.exports.create = function(req, res) {
 module.exports.createSession = function(req, res) {
     return res.redirect('/');
 }
+
+module.exports.destroySession = function(req, res) {
+    console.log('Log Out')
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
+}
