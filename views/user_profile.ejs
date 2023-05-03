@@ -1,5 +1,26 @@
-<link rel="stylesheet" href="../assets/CSS/user_profile.css">
-<h1>Codeial / <%= title %></h1>
+<link rel="stylesheet" href="/css/user_profile.css" />
 
-<p> <%= user.name %> </p>
-<p> <%= user.email %> </p>
+<div class="user-profile-container">
+    <div class="container">
+        <h2>Profile</h2>
+
+        <div class="inner-container">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td style="padding-right: 15px;">Name</td>
+                        <td class="profile-detail-name"><%= user.name %></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><%= user.email %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr/>
+            <div class="sign-container">
+                <a href="/users/sign-out" class="anchor-btn">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>

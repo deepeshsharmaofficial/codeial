@@ -1,0 +1,39 @@
+@import "_var.scss";
+
+.input-btn {
+    outline: 0;
+    margin-bottom: 20px;
+    border: 1px solid $text2;
+    padding: 10px 16px;
+    border-radius: 6px;
+
+    &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px $hover-color;
+        caret-color: $primary-color;
+    }
+}
+
+.submit-btn {
+    outline: 0;
+    padding: 10px 16px;
+    border-radius: 6px;
+    background-color: $primary-color;
+    border: none;
+    color: white;
+
+    &:focus {
+        background-color: $blue-dark
+    }
+}
+
+.anchor-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    background-color: $primary-color;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}

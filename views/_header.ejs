@@ -1,6 +1,68 @@
-<header>
-    <h3>Header</h3>
+<link rel="stylesheet" href="/css/header.css">
 
+<header>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="/images/logo.png" alt="logo" class="logo">
+            </a>
+        </div>
+
+        <% if (locals.user) { %>
+            
+            <div class="nav-right">
+                <div class="nav-user-icon">
+                    <img src="/images/profile-pic.png" alt="" onclick="settingsMenuToggle()">
+                </div>
+            </div>
+
+            <!-- left-sidebar -->
+            <div class="settings-menu">
+                <div class="settings-menu-inner">
+                    <div class="user-profile">
+                        <img src="/images/profile-pic.png" alt="">
+                        <div> 
+                            <p>
+                                <%= user.name %>
+                            </p>
+                            <a href="/users/profile">
+                                See your profile
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="settings-links-container">
+                        <div class="settings-icon">
+                                <i class="ri-login-box-line ri-xl"></i>
+                            </div>
+                            <a href="/users/sign-out">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <% } else { %>
+
+                <div class="nav-right">
+                    <div class="signin-signup-container">
+                        <li>
+                            <a href="/users/sign-in" class="anchor-btn">Sign In</a>
+                        </li>
+                        <li>
+                            <a href="/users/sign-up" class="anchor-btn">Sign Up</a>
+                        </li>
+                    </div>
+                </div>
+
+            <% } %>
+    </nav>
+
+<!--     
     <ul>
         <% if (locals.user) { %>
             <li>
@@ -19,5 +81,9 @@
                 <a href="/users/sign-up">Sign Up</a>
             </li>
         <% } %>
-    </ul>
+    </ul> 
+-->
+
 </header>
+
+<script src="/js/navbar_setting.js"></script>

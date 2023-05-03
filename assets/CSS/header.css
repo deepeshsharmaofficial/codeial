@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+.input-btn {
+  outline: 0;
+  margin-bottom: 20px;
+  border: 1px solid #dedede;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+.input-btn:focus {
+  border-color: #1876f2;
+  box-shadow: 0 0 0 2px #e7f3ff;
+  caret-color: #1876f2;
+}
+
+.submit-btn {
+  outline: 0;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #1876f2;
+  border: none;
+  color: white;
+}
+.submit-btn:focus {
+  background-color: #29487d;
+}
+
+.anchor-btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #1876f2;
+  border: none;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+}
+
+header {
+  background-color: #1876f2;
+  position: fixed;
+  width: 100%;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary-color);
+  padding: 5px 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+header nav .nav-left img {
+  width: 165px;
+}
+header nav .settings-menu {
+  position: absolute;
+  width: 90%;
+  max-width: 350px;
+  height: 160px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+  top: 108%;
+  right: 5%;
+  max-height: 0;
+  transition: max-height 0.3s;
+}
+header nav .settings-menu .settings-menu-inner {
+  padding: 20px;
+}
+header nav .settings-menu .settings-menu-inner .user-profile {
+  display: flex;
+  align-items: center;
+}
+header nav .settings-menu .settings-menu-inner .user-profile img {
+  width: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  display: inline;
+}
+header nav .settings-menu .settings-menu-inner .user-profile div p {
+  margin-bottom: -5px;
+  font-weight: 500;
+  color: var(--primary-text);
+}
+header nav .settings-menu .settings-menu-inner .user-profile div a {
+  font-size: 1.1rem;
+  color: #1876f2;
+  text-decoration: none;
+}
+header nav .settings-menu .settings-menu-inner hr {
+  border: 0;
+  height: 1px;
+  background: #9a9a9a;
+  margin: 15px 0;
+}
+header nav .settings-menu .settings-menu-inner .settings-links-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+header nav .settings-menu .settings-menu-inner .settings-links-container .settings-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4E6EB;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+header nav .settings-menu .settings-menu-inner .settings-links-container .settings-icon i {
+  color: #525252;
+}
+header nav .settings-menu .settings-menu-inner .settings-links-container a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--primary-text);
+}
+header nav .settings-menu-height {
+  max-height: 450px;
+}
+header nav .nav-right .nav-user-icon img {
+  width: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+header nav .nav-right .signin-signup-container {
+  display: flex;
+}
+header nav .nav-right .signin-signup-container li {
+  list-style: none;
+  padding-left: 10px;
+}
+header nav .nav-right .signin-signup-container li a {
+  background-color: white;
+  color: var(--primary-text);
+}
+header nav .nav-right .signin-signup-container li a:hover {
+  background-color: #dddddd;
+}
