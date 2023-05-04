@@ -8,4 +8,22 @@
         <textarea name="content" id="" cols="30" rows="3" placeholder="Type Here..."></textarea>
         <input type="submit" value="Post">
     </form>
+
+    <div id="posts-list-container">
+        <ul>
+            <% for (let i of post_list) { %>
+
+            <li class="post-list-container">
+                <p>
+                    <%= i.content %>
+                    <br>
+                    <small>
+                        <%= i.user.name %> 
+                    </small>
+                </p>
+            </li>
+
+            <% } %>
+        </ul>
+    </div>
 </section>
