@@ -51,6 +51,6 @@ body {
   background-color: #efefef;
 }
 body #layout-main {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 60px;
 }
