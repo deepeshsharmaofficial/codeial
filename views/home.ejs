@@ -17,6 +17,12 @@
 
             <li class="post-list-container">
                 <p>
+                    <% if(locals.user && locals.user.id == i.user.id) { %>
+                    <small>
+                        <a href="/posts/destroy/<%= i.id %>">X</a>
+                    </small>
+                    <% } %>
+
                     <%= i.content %>
                     <br>
                     <small>
