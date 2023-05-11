@@ -3,9 +3,20 @@
 <div class="user-profile-container">
     <div class="container">
         <h2>Profile</h2>
-
         <div class="inner-container">
+            <% if(user.id == profile_user.id){ %>
+                <form action="/users/update/<%= profile_user.id %>" method="post">
+                    <!-- if user matches then show the form -->
+                    <div class="form-container">
+                        <input type="text" name="name" placeholder="Your Name" class="input-btn" value="<%= profile_user.name %>" required>
+                        <input type="email" name="email" placeholder="Your Email" class="input-btn" value="<%= profile_user.email %>" required>
+                        <input type="submit" value="Update" class="submit-btn">
+                    </div>
+                </form>
+                <hr>
+            <% }else{ %>
             <table class="table">
+                <!-- else show only the profile info -->
                 <tbody>
                     <tr>
                         <td style="padding-right: 15px;">Name</td>
@@ -21,6 +32,7 @@
             <div class="sign-container">
                 <a href="/users/sign-out" class="anchor-btn">Logout</a>
             </div>
+            <% } %>
         </div>
     </div>
 </div>
