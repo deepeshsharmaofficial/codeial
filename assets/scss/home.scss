@@ -1,0 +1,43 @@
+@import "_var.scss";
+@import "_default.scss";
+
+#home-container {
+    display: flex;
+    padding-bottom: 70px;
+
+    #post-container {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+
+        #post-inner-container {
+            width: 700px;
+            // padding: 20px;
+        }
+
+        #feed-posts {
+
+            #post-write-container {
+                background: white;
+                padding: 20px;
+                box-shadow: 0 1px 2px $shadow-1;
+                margin-top: 20px;
+                border-radius: 8px;
+            }
+
+        }
+    }
+
+    #friends-container {
+        width: 30%;
+
+        #friends-inner-container {
+            padding: 20px;
+
+            #user-friends {
+                padding: 20px;
+                background-color: white;
+            }
+        }
+    }
+}

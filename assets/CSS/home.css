@@ -63,41 +63,32 @@ li {
   background-color: #29487d;
 }
 
-.user-sign-container {
+#home-container {
+  display: flex;
+  padding-bottom: 70px;
+}
+#home-container #post-container {
+  width: 70%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  height: 90vh;
 }
-.user-sign-container .container {
-  width: 85%;
-  max-width: 400px;
+#home-container #post-container #post-inner-container {
+  width: 700px;
+}
+#home-container #post-container #feed-posts #post-write-container {
   background: white;
-  padding: 24px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
-.user-sign-container .container .inner-container {
-  padding-top: 30px;
+#home-container #friends-container {
+  width: 30%;
 }
-.user-sign-container .container .inner-container .form-container {
-  display: flex;
-  flex-direction: column;
+#home-container #friends-container #friends-inner-container {
+  padding: 20px;
 }
-.user-sign-container .container .inner-container hr {
-  border: 0;
-  height: 1px;
-  background: #dadde1;
-  margin: 20px 0px;
-}
-.user-sign-container .container .inner-container .sign-container p a {
-  color: black;
-}
-.user-sign-container .container .inner-container .sign-container p a:hover {
-  color: #1876f2;
-}
-.user-sign-container .container .inner-container .sign-container p a:active {
-  color: #29487d;
+#home-container #friends-container #friends-inner-container #user-friends {
+  padding: 20px;
+  background-color: white;
 }

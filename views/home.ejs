@@ -1,34 +1,46 @@
-<h1>
-    Codeial / <%= title %>
-</h1>
+<link rel="stylesheet" href="/css/home.css">
 
-<section id="feed-posts">
-    <h4>Posts</h4>
-    <% if(locals.user) { %>
-    <form action="/posts/create" id="new-post-form" method="post">
-        <textarea name="content" id="" cols="30" rows="3" placeholder="Type Here..." required></textarea>
-        <input type="submit" value="Post">
-    </form>
-    <% } %>
-    
-    <div id="posts-list-container">
-        <ul>
-            <%for(i of post_list) {%>
-                <%- include('_post')-%>
-            <%}%>
-        </ul>
+<div id="home-container">
+
+    <div id="post-container">
+        <div id="post-inner-container">
+            <section id="feed-posts">
+
+                <div id="post-write-container">
+                    <h4>Posts</h4>
+                    <% if(locals.user) { %>
+                    <form action="/posts/create" id="new-post-form" method="post">
+                        <textarea name="content" id="" cols="30" rows="3" placeholder="Type Here..." class="input-text-area" required></textarea>
+                        <input type="submit" value="Post" class="submit-btn">
+                    </form>
+                    <% } %>
+                </div>
+
+                <div id="posts-list-container">
+                    <ul>
+                        <%for(i of post_list) {%>
+                            <%- include('_post')-%>
+                        <%}%>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </div>
-</section>
 
-<section id="user-frineds">
-    <h4>Friends</h4>
-    <ul>
-        <% for(u of all_users) {%>
-            <li>
-                <p>
-                    <a href="/users/profile/<%= u.id %>"> <%= u.name %> </a>
-                </p>
-            </li> 
-        <% } %>
-    </ul>
-</section>
+    <div id="friends-container">
+        <div id="friends-inner-container">
+            <section id="user-friends">
+                <h4>Friends</h4>
+                <ul>
+                    <% for(u of all_users) {%>
+                        <li>
+                            <p>
+                                <a href="/users/profile/<%= u.id %>"> <%= u.name %> </a>
+                            </p>
+                        </li> 
+                    <% } %>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>

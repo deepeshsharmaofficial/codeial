@@ -63,41 +63,10 @@ li {
   background-color: #29487d;
 }
 
-.user-sign-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  height: 90vh;
-}
-.user-sign-container .container {
-  width: 85%;
-  max-width: 400px;
-  background: white;
-  padding: 24px;
+.post-list-container {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-.user-sign-container .container .inner-container {
-  padding-top: 30px;
-}
-.user-sign-container .container .inner-container .form-container {
-  display: flex;
-  flex-direction: column;
-}
-.user-sign-container .container .inner-container hr {
-  border: 0;
-  height: 1px;
-  background: #dadde1;
-  margin: 20px 0px;
-}
-.user-sign-container .container .inner-container .sign-container p a {
-  color: black;
-}
-.user-sign-container .container .inner-container .sign-container p a:hover {
-  color: #1876f2;
-}
-.user-sign-container .container .inner-container .sign-container p a:active {
-  color: #29487d;
 }

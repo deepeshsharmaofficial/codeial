@@ -6,11 +6,11 @@
                 <a href="/comments/destroy/<%= comment.id %>">X</a>
             </small>
         <% } %>
-
-        <%= comment.content %>
-        <br>
+        
         <small>
             <%= comment.user.name %>
         </small>
+        <br>
+        <%= comment.content %>
     </p>
 </li>

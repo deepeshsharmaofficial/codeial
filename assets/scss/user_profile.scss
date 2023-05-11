@@ -16,25 +16,30 @@
         padding: 24px;
         border-radius: 8px;
         box-shadow: $primary-box-shadow;
-    }
 
-    .inner-container {
-        padding-top: 30px;
+        .inner-container {
+            padding-top: 30px;
 
-        table {
-            width: 100%;
-            text-align: left;
-            border-collapse:separate; 
-            border-spacing: 0 12px;
+            .form-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            table {
+                width: 100%;
+                text-align: left;
+                border-collapse:separate; 
+                border-spacing: 0 12px;
+            }
+
+            
+            hr {
+                border: 0;
+                height: 1px;
+                background: #dadde1;
+                margin: 20px 0px;
+            }
+
         }
-
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background: #dadde1;
-            margin: 20px 0px;
-        }
-
     }
 }

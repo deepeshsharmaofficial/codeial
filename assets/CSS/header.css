@@ -1,32 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-.input-btn {
+li {
+  list-style: none;
+}
+
+.input-text {
   outline: 0;
   margin-bottom: 20px;
   border: 1px solid #dedede;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: 6px;
+  width: 100%;
 }
-.input-btn:focus {
+.input-text:focus {
   border-color: #1876f2;
   box-shadow: 0 0 0 2px #e7f3ff;
   caret-color: #1876f2;
 }
 
+.input-text-area {
+  outline: 0;
+  border: 1px solid #F0F2F5;
+  padding: 8px 16px;
+  border-radius: 6px;
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  background-color: #F0F2F5;
+  height: 100px;
+  font-size: 1.2rem;
+}
+.input-text-area:focus {
+  box-shadow: 0 0 0 2px #e7f3ff;
+  border-color: #1876f2;
+  caret-color: #1876f2;
+}
+
 .submit-btn {
   outline: 0;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: 6px;
   background-color: #1876f2;
   border: none;
   color: white;
+  cursor: pointer;
 }
 .submit-btn:focus {
   background-color: #29487d;
 }
 
 .anchor-btn {
-  padding: 10px 16px;
+  padding: 8px 16px;
   border-radius: 6px;
   background-color: #1876f2;
   border: none;
@@ -34,6 +58,9 @@
   text-decoration: none;
   display: inline-block;
   width: 100%;
+}
+.anchor-btn:focus {
+  background-color: #29487d;
 }
 
 header {
