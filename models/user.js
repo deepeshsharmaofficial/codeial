@@ -31,7 +31,11 @@ let storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + uniqueSuffix)
     }
 })
-  
+
+// Static methods - Static Function are the ones which can be called overall on the whole class
+userSchema.statics.uploadedAvatar = multer({storage: storage}).single('avatar');
+userSchema.statics.avatarPath = AVATAR_PATH; // I need this avatarPath to be available publicly for the user model
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
