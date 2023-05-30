@@ -5,6 +5,7 @@
         <h2>Profile</h2>
         <div class="inner-container">
             <% if(user.id == profile_user.id){ %>
+                <img src="<%= user.avatar %>" alt="<%= user.name %>" width="150">
                 <form action="/users/update/<%= profile_user.id %>" method="post" enctype="multipart/form-data">
                     <!-- if user matches then show the form -->
                     <div class="form-container">
@@ -23,6 +24,7 @@
                 <!-- else show only the profile info -->
                 <hr/>
                 <tbody>
+                    <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="150">
                     <tr>
                         <td style="padding-right: 15px;">Name</td>
                         <td class="profile-detail-name"><%= profile_user.name %></td>
