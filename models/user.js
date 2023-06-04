@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     avatar: {
-        type: String
+        type: String,
+        default: '/images/default-avatar.png' // Set the default avatar path here
     }
 }, {
     timestamps: true
@@ -35,8 +36,27 @@ let storage = multer.diskStorage({
     }
 })
 
+const fileFilter = (req, file, cb) => {
+    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    if (allowedFileTypes.includes(file.mimetype)) {
+        cb(null, true);
+        // callback(no error, pass as true)
+
+    } else {
+        req.flash('error', 'Error : Image Type should jpeg | jpg | png Only!');
+        cb(new Error('Invalid file type. Only JPEG, JPG, PNG, and GIF files are allowed.'));
+    }
+};
+
 // Static methods - Static Function are the ones which can be called overall on the whole class
-userSchema.statics.uploadedAvatar = multer({storage: storage}).single('avatar');
+userSchema.statics.uploadedAvatar = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000
+      },
+    fileFilter: fileFilter
+}).single('avatar');
+
 userSchema.statics.avatarPath = AVATAR_PATH; // I need this avatarPath to be available publicly for the user model
 
 const User = mongoose.model('User', userSchema);
