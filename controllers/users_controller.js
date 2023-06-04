@@ -1,4 +1,6 @@
 const User = require('../models/user')
+const fs = require('fs');
+const path = require('path');
 
 module.exports.profile = function(req, res) {
     // res.end('<h1>User Profile</h1>');
@@ -30,7 +32,11 @@ module.exports.update = async function(req, res) {
             // because this is a multi-part form.
             // my bodyparser is not able to parse it because this is a multi-part form
             User.uploadedAvatar(req, res, function(err){
-                if(err) {console.log('*****Multer Error: ', err)}
+                if(err) {
+                    console.log('*****Multer Error: ', err);
+                    req.flash('error', 'Error in Uploading Avatar');
+                    return res.redirect('back');
+                }
 
                 console.log(req.file);
                 
@@ -39,11 +45,22 @@ module.exports.update = async function(req, res) {
 
                 // We are going to update it only when user is sending it.
                 if(req.file) {
+                    const imagePath = path.join(__dirname, '..', user.avatar);
+                    if (fs.existsSync(imagePath)) {
+                        fs.unlinkSync(imagePath);
+                    }
+
                     // this is saving the path of the uploaded file into the avatar field in the user.
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
-                user.save();
-                return res.redirect('back');
+                user.save(function(err) {
+                    if (err) {
+                        req.flash('error', 'Error in Saving User');
+                        return res.redirect('back');
+                    }
+                    req.flash('success', 'Profile Updated Successfully!');
+                    return res.redirect('back');
+                });
 
             });
 
@@ -92,6 +109,7 @@ module.exports.create = function(req, res) {
         if(err) {console.log('error in finding user in signing up'); return}
 
         if(!user) {
+            // Create the user
             User.create(req.body, function(err, user){
                 if(err) {console.log('error in creating user while signing up'); return}
 
