@@ -38,7 +38,9 @@ module.exports.create = async function(req, res){
 
             
             if(req.xhr) {
-                comment = await comment.populate('user', 'name').execPopulate();
+                comment = await comment
+                .populate('user', ['name', 'avatar'])
+                .execPopulate();
 
                 return res.status(200).json({
                     data: {

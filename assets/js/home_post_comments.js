@@ -54,6 +54,7 @@ class PostComments{
     newCommentDom(comment) {
         return $(`<li id="comment-${comment._id}">
                     <p>
+                        <img src="${comment.user.avatar}" alt="${comment.user.name}" width="50">
                         <small>
                             <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
                         </small>

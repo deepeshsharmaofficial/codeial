@@ -11,7 +11,7 @@
                 url: '/posts/create',
                 data: newPostForm.serialize(),
                 success: function(data) {
-                    console.log(data);
+                    console.log('Home Post Data ->',data);
                     let newPost = newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
@@ -39,6 +39,7 @@
     let newPostDom = function(i) {
         return $(`<li id="post-${i._id}" class="post-list-container">
                     <p>
+                        <img src="${i.user.avatar}" alt="${i.user.name}" width="50">
                         <small>
                             <a class="delete-post-button" href="/posts/destroy/${i._id}">X</a>
                         </small>
