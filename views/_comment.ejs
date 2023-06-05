@@ -1,5 +1,6 @@
 <li id="comment-<%= comment._id %>">
     <p>
+        <img src="<%= comment.user.avatar %>" alt=" <%= i.user.name %> " width="50">
         <!-- && locals.user.id == comment.user.id -->
         <% if(locals.user) { %>
             <small>

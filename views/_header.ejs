@@ -12,7 +12,7 @@
             
             <div class="nav-right">
                 <div class="nav-user-icon">
-                    <img src="/images/profile-pic.png" alt="" onclick="settingsMenuToggle()">
+                    <img src="<%= user.avatar %>" alt="<%= user.name %>" onclick="settingsMenuToggle()">
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
             <div class="settings-menu">
                 <div class="settings-menu-inner">
                     <div class="user-profile">
-                        <img src="/images/profile-pic.png" alt="">
+                        <img src="<%= user.avatar %>" alt="<%= user.name %>">
                         <div> 
                             <p>
                                 <%= user.name %>

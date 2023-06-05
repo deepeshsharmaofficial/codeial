@@ -2,6 +2,7 @@
 
 <li id="post-<%= i._id %>" class="post-list-container">
     <p>
+        <img src="<%= i.user.avatar %>" alt=" <%= i.user.name %> " width="50">
         <% if(locals.user && locals.user.id == i.user.id) { %>
         <small>
             <a class="delete-post-button" href="/posts/destroy/<%= i.id %>">X</a>
