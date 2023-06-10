@@ -20,4 +20,18 @@ router.post('/create-session', passport.authenticate(
 
 router.get('/sign-out', usersController.destroySession);
 
+/*
+We will be creating two routes
+-> When we will click on the button for google sign-in for fetching the data
+
+-> When google fetches the data from the database and sends it back to the
+routes which is the callback URL
+*/
+
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+// The scope is the information that we are looking to fetch - { profile, email}.
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/users/sign-in'}), usersController.createSession)
+
+// Until and unless we ask for a refresh token it is not coming up.
+
 module.exports = router;
