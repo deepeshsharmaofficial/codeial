@@ -1,6 +1,9 @@
 const User = require('../models/user')
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const forgotPasswordMailer = require('../mailers/forgot_password_mailer');
+const Token = require('../models/token');
 
 module.exports.profile = function(req, res) {
     // res.end('<h1>User Profile</h1>');
@@ -11,6 +14,103 @@ module.exports.profile = function(req, res) {
         })
     });
 }
+
+// Forgot password - Render forgot password page
+module.exports.forgotPassword = function(req, res) {
+    if(req.isAuthenticated()) {
+        return res.redirect('/users/profile');
+    }
+    
+    res.render('forgot_password', {
+      title: 'Forgot Password'
+    });
+}
+
+// Forgot password - Send reset password email
+module.exports.resetPassword = async function(req, res) {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        
+        if (!user) {
+            req.flash('error', 'User with that email address does not exist');
+            return res.redirect('back');
+        }
+
+        // Generate a unique reset token
+        const resetToken = crypto.randomBytes(20).toString('hex');
+
+        // Save the reset token in the Token collection
+        await Token.create({
+            userId: user._id,
+            token: resetToken
+        });
+  
+        // Send an email to the user with the reset token and instructions on how to reset their password
+        forgotPasswordMailer.newForgetPassword(req, resetToken ,user);
+    
+        req.flash('success', 'An email has been sent to ' + user.email + ' with further instructions.');
+        return res.redirect('/users/sign-in');
+    } catch (err) {
+        console.log('Error in resetting password*********************',err);
+        req.flash('error', 'Error in resetting password');
+        return res.redirect('back');
+    }
+}
+
+// Reset password - Render reset password page
+module.exports.showResetPasswordForm = async function(req, res) {
+    try {
+      const token = await Token.findOne({ token: req.params.token });
+  
+      if (!token) {
+        req.flash('error', 'Invalid or expired token!');
+        return res.redirect('/users/forgot-password');
+      }
+  
+      const user = await User.findById(token.userId);
+  
+      res.render('reset_password', {
+        title: 'Reset Password',
+        token: req.params.token
+      });
+    } catch (err) {
+      console.log(err);
+      req.flash('error', 'Something went wrong!');
+      return res.redirect('back');
+    }
+};
+
+// Reset password - Update user password
+module.exports.updatePassword = async function(req, res) {
+    try {
+      const token = await Token.findOne({ token: req.params.token });
+  
+      if (!token) {
+        req.flash('error', 'Invalid or expired token!');
+        return res.redirect('/users/forgot-password');
+      }
+
+      const user = await User.findById(token.userId);
+  
+      if (req.body.password !== req.body.confirm_password) {
+        req.flash('error', 'Password and confirm password do not match!');
+        return res.redirect('back');
+      }
+
+      user.password = req.body.password;
+      await user.save();
+  
+      // Delete the token
+      await token.remove();
+  
+      req.flash('success', 'Password has been successfully reset. You can now log in with your new password.');
+      return res.redirect('/users/sign-in');
+    } catch (err) {
+      console.log(err);
+      req.flash('error', 'Something went wrong!');
+      return res.redirect('back');
+    }
+};
 
 module.exports.update = async function(req, res) {
     // if(req.user.id == req.params.id) {
